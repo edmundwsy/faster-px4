@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/python3
 
 # /* ----------------------------------------------------------------------------
 #  * Copyright 2020, Jesus Tordesillas Torres, Aerospace Controls Laboratory
@@ -54,23 +54,23 @@ class Faster_Commands:
     #Called when buttom pressed in the interface
     def srvCB(self,req):
         if(self.initialized==False):
-            print "Not initialized yet"
+            print( "Not initialized yet")
             return
 
         if req.mode == req.START and self.mode.mode==self.mode.ON_GROUND:
-            print "Taking off"
+            print( "Taking off")
             self.takeOff()
-            print "Take off done"
+            print( "Take off done")
 
         if req.mode == req.KILL:
-            print "Killing"
+            print( "Killing")
             self.kill()
 
         if req.mode == req.END and self.mode.mode==self.mode.GO:
-            print "Landing"
+            print( "Landing")
             self.land()
-            print "Landing done"
-
+            print( "Landing done"
+)
 
     def sendMode(self):
         self.mode.header.stamp = rospy.get_rostime()
@@ -78,7 +78,7 @@ class Faster_Commands:
 
 
     def takeOff(self):
-        print "Taking off"
+        print( "Taking off")
         goal=Goal();
         goal.power=True
         goal.p.x = self.pose.position.x;
@@ -142,4 +142,4 @@ def startNode():
 if __name__ == '__main__':
     rospy.init_node('faster_commands')  
     startNode()
-    print "Faster Commands started" 
+    print( "Faster Commands started" )
